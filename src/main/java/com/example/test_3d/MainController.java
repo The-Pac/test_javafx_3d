@@ -1,5 +1,6 @@
 package com.example.test_3d;
 
+import com.example.test_3d.classe.Cube;
 import javafx.fxml.Initializable;
 import javafx.scene.AmbientLight;
 import javafx.scene.layout.AnchorPane;
@@ -7,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Box;
 import javafx.scene.shape.CullFace;
+import javafx.scene.shape.DrawMode;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -14,7 +16,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
     public AnchorPane anchor_main;
     public AmbientLight ambient_light;
-    public int chunk_size = 16, chunck_number = 10, block_size = 50, pos_x = 0, pos_z = 100, pos_y = 600, thickness = 1;
+    public int chunk_size = 16, chunck_number = 10, block_size = 50, pos_x = 0, pos_z = 100, pos_y = 600, thickness = 2;
     public Color box_color;
 
     @Override
@@ -42,6 +44,8 @@ public class MainController implements Initializable {
             pos_y += block_size;
         }
 
+        //Cube cube = new Cube(pos_x,pos_y,pos_z);
+
 
     }
 
@@ -51,7 +55,7 @@ public class MainController implements Initializable {
             for (int row = 0; row < chunk_size; row++) {
                 Box box = new Box(block_size, block_size, block_size);
                 box.setCullFace(CullFace.NONE);
-                //box.setDrawMode(DrawMode.LINE);
+                box.setDrawMode(DrawMode.LINE);
                 PhongMaterial box_mat = new PhongMaterial();
 
                 box_mat.setDiffuseColor(box_color);
